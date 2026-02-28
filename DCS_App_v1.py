@@ -294,12 +294,15 @@ for dir_path in [DATA_DIR, ORDERS_DIR, ARCHIVE_DIR, INVENTORY_DIR, STOCK_DIR, CA
 
 
 
-bg_candidates = [DATA_DIR / "background.jpg", DATA_DIR / "background.png"]
-bg_path = None
-for p in bg_candidates:
-    if p.exists() and p.stat().st_size > 0:
-        bg_path = p
-        break
+@st.cache_data
+def get_background_path():
+    bg_candidates = [DATA_DIR / "background.jpg", DATA_DIR / "background.png"]
+    for p in bg_candidates:
+        if p.exists() and p.stat().st_size > 0:
+            return p
+    return None
+
+bg_path = get_background_path()
 if bg_path:
     try:
         with open(bg_path, "rb") as f:
@@ -559,6 +562,7 @@ def save_settings(settings):
     with open(SETTINGS_FILE, 'w') as f:
         json.dump(settings, f, indent=2)
         
+@st.cache_data(ttl=60)
 def load_kloter_lock_status(kloter_id):
     try:
         if KLOTER_STATUS_FILE.exists():
@@ -1262,6 +1266,7 @@ def reset_owner_password_with_token(token, new_password):
     save_settings(settings)
     return True, "Password owner berhasil direset."
 
+@st.cache_data
 def get_upload_limits():
     s = load_settings()
     us = s.get("upload_settings", {})
@@ -3655,6 +3660,7 @@ def show_production_page():
     st.markdown('<div class="form-title">🧾 Buat SPK Baru</div>', unsafe_allow_html=True)
 
     @st.cache_data(ttl=60)
+    @st.cache_data(ttl=300)
     def load_materials_df():
         rows = []
         polos_file = STOCK_DIR / "stock_polos.csv"
@@ -4314,7 +4320,7 @@ def show_profit():
                 user_row['Total'] = user_row['Bagian Tetap'] + user_row['Bagian Pool']
                 total_data.append(user_row)
             total_df = pd.DataFrame(total_data)
-            st.dataframe(total_df)
+            st.dataframe(total_df, use_container_width=True)
             if st.button("💾 Simpan Pembagian ke History"):
                 user_data_list = []
                 for user in total_data:
@@ -6103,7 +6109,7 @@ def show_current_month_bonus():
     display_df.columns = ["Username","Total Poin","Komisi (5%)","% Pool","Bonus Pool","Total Bonus"]
     st.dataframe(
         display_df.style.format({
-            "Komisi (5%)": "Rp {:,.0f}",
+            "Komisi (5%, use_container_width=True)": "Rp {:,.0f}",
             "Bonus Pool": "Rp {:,.0f}",
             "Total Bonus": "Rp {:,.0f}",
             "% Pool": "{:.1f}%"
@@ -7338,7 +7344,7 @@ def main():
             st.markdown("---")
             st.markdown("### 👥 Kinerja Tim (ringkas)")
             data = [{"Tugas": k[0], "User": k[1], "Jumlah": v} for k, v in contrib.items()]
-            st.dataframe(pd.DataFrame(data).sort_values(["Tugas","Jumlah"], ascending=[True, False]), use_container_width=True)
+            st.dataframe(pd.DataFrame(data, use_container_width=True).sort_values(["Tugas","Jumlah"], ascending=[True, False]), use_container_width=True)
             
             # Detail kontribusi tim
             detail_rows = []
