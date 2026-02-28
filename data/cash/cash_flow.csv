@@ -1,0 +1,11 @@
+tanggal,jenis,jumlah,tipe,keterangan,kloter_id,created_by,entry_id
+2025-12-12 18:55,BELANJA STOK,70000.0,OUT,Beli stock ready: Premium Cotton T-shirt 7200 BLACK S - Salo V1,STOCK,owner,
+2025-12-12 18:58,PENJUALAN STOK,0.0,IN,Penjualan stok: Premium Cotton T-shirt 7200 BLACK S 1 pcs untuk Heri. ,STOCK,owner,
+2025-12-13 19:13,BELANJA STOK,70.0,OUT,Plain tees purchase: Premium Cotton T-shirt 7200 BLACK L,STOCK,owner,
+2025-12-14 15:43,BELANJA STOK,70000.0,OUT,Stock purchase: Premium Cotton T-shirt 7200 WHITE S - TIER S,STOCK,owner,
+2025-12-15 04:04,DTF,70000.0,OUT,"Biaya DTF: 2.0 m, 2 desain (kloter K01)",K01,owner,CF-20251215040438-7ad6
+2025-12-15 04:04,DTF KOMISI,7000.0,OUT,"Komisi Operator DTF: 2.0 m, 2 desain (kloter K01)",K01,owner,CF-20251215040438-8138
+2025-12-15 05:06,BELANJA PACKAGING,82500.0,OUT,"Restock packaging: Hangtag +50 pcs, Stiker Bonus +100 pcs, Stiker Ziplock +75 pcs, Thanks Card +50 pcs, Ziplock +50 pcs",STOCK,owner,CF-20251215050637-3442
+2025-12-15 05:37,BELANJA STOK,70000.0,OUT,Stock purchase: Premium Cotton T-shirt 7200 BLACK M - TIER S,STOCK,owner,CF-20251215053759-da0e
+2025-12-15 05:38,PENJUALAN STOK,120000.0,IN,Penjualan stok: Premium Cotton T-shirt 7200 BLACK M 1 pcs untuk Toby. ,STOCK,owner,CF-20251215053832-c680
+2025-12-15 13:01,PEMBAYARAN,60000.0,IN,Pelunasan order DS-K01-20251215-6351 - CASH - ,K01,owner,CF-20251215130125-e2da

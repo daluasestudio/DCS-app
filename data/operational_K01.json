@@ -1,0 +1,23 @@
+{
+  "biaya_produk": 0,
+  "biaya_dtf": 70000,
+  "panjang_dtf": 0.0,
+  "dtf_meter": 2.0,
+  "dtf_unique_design_count": 2,
+  "dtf_total_cost": 70000,
+  "biaya_sablon": 0,
+  "ongkir_supplier": 0,
+  "biaya_lainnya": [
+    {
+      "keterangan": "Komisi Operator DTF (otomatis)",
+      "jumlah": 7000
+    }
+  ],
+  "total": 0,
+  "catatan": "",
+  "updated_at": "",
+  "updated_by": "",
+  "dtf_updated_by": "owner",
+  "dtf_updated_at": "2025-12-15 03:39",
+  "dtf_operator_commission": 7000
+}
